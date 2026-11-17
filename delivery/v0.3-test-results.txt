@@ -119,8 +119,11 @@ test_dsa_manifest_rejects_unrelated_or_changed_report (test_review_regressions.R
 test_export_locks_snapshot_while_editing (test_review_regressions.ReviewRegressions.test_export_locks_snapshot_while_editing) ... ok
 test_preview_route_returns_safe_html (test_review_regressions.ReviewRegressions.test_preview_route_returns_safe_html) ... ok
 test_weekly_uses_latest_market_capture_not_edited_rowid (test_review_regressions.ReviewRegressions.test_weekly_uses_latest_market_capture_not_edited_rowid) ... ok
+test_launchers_are_encoding_independent_ascii (test_startup.StartupTests.test_launchers_are_encoding_independent_ascii) ... ok
+test_windows_powershell_51_parses_start_script (test_startup.StartupTests.test_windows_powershell_51_parses_start_script) ... ok
+test_windows_powershell_51_really_starts_isolated_server (test_startup.StartupTests.test_windows_powershell_51_really_starts_isolated_server) ... ok
 
 ----------------------------------------------------------------------
-Ran 120 tests in 12.701s
+Ran 123 tests in 14.811s
 
 OK

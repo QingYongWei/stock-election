@@ -1,4 +1,5 @@
 param([int]$Port = 8765)
+# Keep this launcher ASCII-only for Windows PowerShell 5.1 code-page compatibility.
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
 $env:PYTHONIOENCODING = 'utf-8'
@@ -7,7 +8,7 @@ $bundledPython = Join-Path $env:USERPROFILE '.dsh\dsh-runtimes\dsh-primary-runti
 if (Test-Path $localPython) { $python = $localPython }
 elseif (Test-Path $bundledPython) { $python = $bundledPython }
 elseif (Get-Command python -ErrorAction SilentlyContinue) { $python = 'python' }
-else { throw '未找到Python。请安装Python 3.11+，并运行 pip install -r requirements-agent.txt。' }
-Write-Host "创作罗盘（暂名）v0.3 http://127.0.0.1:$Port — 保留此窗口运行，Ctrl+C停止。"
+else { throw 'Python 3.11+ was not found. Install Python and run: python -m pip install -r requirements-agent.txt.' }
+Write-Host "Content Compass v0.3: http://127.0.0.1:$Port (Keep this window open; Ctrl+C to stop.)"
 & $python -m stock_agent.server --port $Port
 exit $LASTEXITCODE

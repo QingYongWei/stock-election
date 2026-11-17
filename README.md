@@ -8,7 +8,7 @@
 
 ## 1. 启动或升级
 
-需要Python 3.11+、Pillow和中文字体。首次安装：
+需要Python 3.11+、Pillow和中文字体。Windows启动器兼容Windows PowerShell 5.1和PowerShell 7；脚本保持纯ASCII，避免系统代码页引起解析错误。首次安装：
 
 ```powershell
 python -m venv .venv

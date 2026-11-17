@@ -36,6 +36,13 @@ test_scheduler_busy_does_not_claim_or_duplicate (test_delivery.DeliveryTests.tes
 test_scheduler_dedup_daily_and_weekly_with_serial_retry (test_delivery.DeliveryTests.test_scheduler_dedup_daily_and_weekly_with_serial_retry) ... ok
 test_scheduler_disabled_and_before_time_do_nothing (test_delivery.DeliveryTests.test_scheduler_disabled_and_before_time_do_nothing) ... ok
 test_weekend_can_generate_configured_weekly_not_daily (test_delivery.DeliveryTests.test_weekend_can_generate_configured_weekly_not_daily) ... ok
+test_business_calls_do_not_use_native_browser_dialogs (test_dialog_ui.DialogUiTests.test_business_calls_do_not_use_native_browser_dialogs) ... ok
+test_business_dialog_has_accessible_name_description_and_is_closed (test_dialog_ui.DialogUiTests.test_business_dialog_has_accessible_name_description_and_is_closed) ... ok
+test_controller_focus_cancel_concurrency_and_safe_text (test_dialog_ui.DialogUiTests.test_controller_focus_cancel_concurrency_and_safe_text) ... Dialog controller state, focus, cancellation, concurrency and text-safety checks passed
+ok
+test_controller_is_served_as_same_origin_javascript (test_dialog_ui.DialogUiTests.test_controller_is_served_as_same_origin_javascript) ... [2026-11-17T21:07:57+08:00] GET /static/action-dialog.js 200
+ok
+test_controller_loads_before_app_without_weakening_csp (test_dialog_ui.DialogUiTests.test_controller_loads_before_app_without_weakening_csp) ... ok
 test_child_uses_single_run_and_no_external_document_env (test_dsa_cli.DsaCliTests.test_child_uses_single_run_and_no_external_document_env) ... ok
 test_empty_report_is_not_success (test_dsa_cli.DsaCliTests.test_empty_report_is_not_success) ... ok
 test_nonzero_child_has_no_success_manifest (test_dsa_cli.DsaCliTests.test_nonzero_child_has_no_success_manifest) ... ok
@@ -128,6 +135,6 @@ test_windows_powershell_51_parses_start_script (test_startup.StartupTests.test_w
 test_windows_powershell_51_really_starts_isolated_server (test_startup.StartupTests.test_windows_powershell_51_really_starts_isolated_server) ... ok
 
 ----------------------------------------------------------------------
-Ran 127 tests in 20.447s
+Ran 132 tests in 14.346s
 
 OK

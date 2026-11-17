@@ -113,7 +113,7 @@ class Handler(BaseHTTPRequestHandler):
                     if not file.is_file():raise KeyError('文件不存在')
                     raw=file.read_bytes()
                 return self.send(200,raw,'image/png')
-            if method=='GET' and path in ('/','/index.html','/app.js','/style.css','/static/app.js','/static/style.css','/favicon.ico'):
+            if method=='GET' and path in ('/','/index.html','/app.js','/style.css','/static/app.js','/static/style.css','/static/action-dialog.js','/favicon.ico'):
                 file=STATIC/('index.html' if path=='/' else path.rsplit('/',1)[-1])
                 if not file.is_file():return self.send(404,{'error':'文件不存在'})
                 ctype=mimetypes.guess_type(str(file))[0] or 'application/octet-stream'

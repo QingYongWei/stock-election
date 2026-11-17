@@ -221,3 +221,38 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project-specific runtime and privacy exclusions
+# Runtime secrets, database, reports and customer data
+/data/
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+/vendor/
+*.log
+/dist/
+
+# Local editor state, upstream reference checkout and generated private planning files
+/.idea/
+/research/
+/build_plan_docx.py
+/*.docx
+/*.pdf
+
+# Keep only reviewed test receipts and offline evidence, never fixture databases
+/delivery/*
+!/delivery/v0.3-test-results.txt
+!/delivery/v0.3-release-smoke.json
+!/delivery/evidence/
+/delivery/evidence/*
+!/delivery/evidence/v0.3-platform-fixture.png
+!/delivery/evidence/v0.3-finance-fixture.png
+*.db
+*.sqlite
+*.sqlite3
+*.backup
+*.pem
+*.key

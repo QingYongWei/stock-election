@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "version": "0.3.0",
+  "clean_archive": true,
+  "real_network": true,
+  "market_date": "2026-11-17",
+  "quote_count": 6,
+  "announcement_count": 5,
+  "cards": 4,
+  "card_size": [
+    1080,
+    1440
+  ],
+  "engine": "facts",
+  "unconfigured_ai_not_publishable": true,
+  "rich_copy_and_approval_blocked": true,
+  "images_zip": true,
+  "export_crc": true,
+  "real_model_tested": false,
+  "external_publish": false,
+  "multi_workspace": true,
+  "generic_unconfigured_blocked": true,
+  "server_shutdown_in_finally": true,
+  "test_server_closed": true,
+  "temporary_cleanup_complete": true
+}

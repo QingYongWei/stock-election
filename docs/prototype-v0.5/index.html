@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>创作罗盘（暂名）P0.5 · 多领域方向与个人工作空间</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="journey.css">
+  <script src="samples.js" defer></script>
+  <script src="journey.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="prototype-banner">P0.5 交互评审原型 · 平台名暂定 · 推荐、样稿、连接与跳转均为模拟 · 不输入真实Key</div>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#home"><span class="brand-mark">创</span><span>创作罗盘<small>暂名 · CONTENT COMPASS</small></span></a>
+      <div class="workspace-label">通用内容平台 <span>P0.5</span></div>
+      <nav aria-label="主导航">
+        <a href="#home" data-route="home">◫ <span>平台首页</span></a>
+        <a href="#explore" data-route="explore">✧ <span>找内容方向</span></a>
+        <a href="#workspace" data-route="workspace">▧ <span>我的工作空间</span></a>
+        <a href="#content" data-route="content">▤ <span>内容预览与发布</span></a>
+        <a href="#providers" data-route="providers">◇ <span>模型服务商</span></a>
+        <a href="#automation" data-route="automation">◎ <span>偏好与高级设置</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <p>先看具体内容，再选择你的方向。</p>
+        <small>用户自行向服务商充值 · 人工审核发布</small>
+        <button class="text-button" id="reset">↺ 恢复原型初始状态</button>
+        <div class="avatar">演 <span>演示账号<small>本地会话 · 不保存密钥</small></span></div>
+      </div>
+    </aside>
+    <div class="main-shell">
+      <header class="topbar"><span><span id="workspace-context">创作罗盘 · 平台（暂名）</span> <span class="slash">/</span> <span id="breadcrumb">平台首页</span></span><span class="session-tag">● 本地演示</span></header>
+      <main id="main" tabindex="-1"></main>
+      <footer>独立评审原型 · 全部内容为预置示例，非真实AI输出 · 未连接真实模型、支付或发布服务 · 主品牌名称待确认</footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="modal-root"></div>
+</body>
+</html>

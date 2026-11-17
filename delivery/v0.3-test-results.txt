@@ -22,8 +22,8 @@ test_no_valid_quote_raises_instead_of_mock_fallback (test_agent.MarketAndContent
 test_quote_parser_filters_malformed_and_future_rows (test_agent.MarketAndContentTests.test_quote_parser_filters_malformed_and_future_rows) ... ok
 test_weekly_only_uses_existing_daily_snapshots_without_inventing_week_return (test_agent.MarketAndContentTests.test_weekly_only_uses_existing_daily_snapshots_without_inventing_week_return) ... ok
 test_config_api_secret_not_returned_and_empty_field_preserves (test_agent.ServerTests.test_config_api_secret_not_returned_and_empty_field_preserves) ... ok
-Request error: RuntimeError
-test_internal_error_does_not_expose_exception_body (test_agent.ServerTests.test_internal_error_does_not_expose_exception_body) ... ok
+test_internal_error_does_not_expose_exception_body (test_agent.ServerTests.test_internal_error_does_not_expose_exception_body) ... Request error: RuntimeError
+ok
 test_job_api_generate_list_get_edit_review_export_and_regenerate_parent (test_agent.ServerTests.test_job_api_generate_list_get_edit_review_export_and_regenerate_parent) ... ok
 test_missing_routes_job_and_artifact_traversal_return_404 (test_agent.ServerTests.test_missing_routes_job_and_artifact_traversal_return_404) ... ok
 test_security_host_origin_content_type_and_body_validation (test_agent.ServerTests.test_security_host_origin_content_type_and_body_validation) ... ok
@@ -68,13 +68,17 @@ test_schema_cards_and_strict_lengths (test_generic.GenericTest.test_schema_cards
 test_topics_and_source_references (test_generic.GenericTest.test_topics_and_source_references) ... ok
 test_untrusted_material_is_data_no_io_execution_or_mutation (test_generic.GenericTest.test_untrusted_material_is_data_no_io_execution_or_mutation) ... ok
 test_connection_endpoint_matches_editorial (test_platform.PlatformTests.test_connection_endpoint_matches_editorial) ... ok
+test_creation_model_flag_requires_boolean (test_platform.PlatformTests.test_creation_model_flag_requires_boolean) ... ok
 test_explicit_connection_test_sanitizes_errors (test_platform.PlatformTests.test_explicit_connection_test_sanitizes_errors) ... ok
 test_finance_dsa_validation_is_atomic (test_platform.PlatformTests.test_finance_dsa_validation_is_atomic) ... ok
 test_fresh_samples_and_idempotence (test_platform.PlatformTests.test_fresh_samples_and_idempotence) ... ok
+test_invalid_save_and_use_rolls_back_connection_and_assignments (test_platform.PlatformTests.test_invalid_save_and_use_rolls_back_connection_and_assignments) ... ok
 test_legacy_facts_mode_remains_facts_with_saved_key (test_platform.PlatformTests.test_legacy_facts_mode_remains_facts_with_saved_key) ... ok
 test_legacy_key_never_resurrects_after_unassignment_delete_clear (test_platform.PlatformTests.test_legacy_key_never_resurrects_after_unassignment_delete_clear) ... ok
 test_legacy_migration_preserves_and_syncs (test_platform.PlatformTests.test_legacy_migration_preserves_and_syncs) ... ok
 test_provider_url_and_json_validation (test_platform.PlatformTests.test_provider_url_and_json_validation) ... ok
+test_save_and_use_connection_is_atomic_and_does_not_call_model (test_platform.PlatformTests.test_save_and_use_connection_is_atomic_and_does_not_call_model) ... ok
+test_save_only_never_switches_or_revives_creation_model (test_platform.PlatformTests.test_save_only_never_switches_or_revives_creation_model) ... ok
 test_secret_assignments_clear_and_effective (test_platform.PlatformTests.test_secret_assignments_clear_and_effective) ... ok
 test_workspace_feedback_isolation_and_validation (test_platform.PlatformTests.test_workspace_feedback_isolation_and_validation) ... ok
 test_api_scope_and_persistence (test_platform_integration.PlatformIntegrationTests.test_api_scope_and_persistence) ... ok
@@ -124,6 +128,6 @@ test_windows_powershell_51_parses_start_script (test_startup.StartupTests.test_w
 test_windows_powershell_51_really_starts_isolated_server (test_startup.StartupTests.test_windows_powershell_51_really_starts_isolated_server) ... ok
 
 ----------------------------------------------------------------------
-Ran 123 tests in 14.811s
+Ran 127 tests in 20.447s
 
 OK

@@ -280,12 +280,14 @@ def _disable_legacy_key(c):
 
 
 def save_provider(payload, id=None):
-    _object(payload, {'name','preset','api_base','model','api_key','clear_api_key','promotion_url'})
+    _object(payload, {'name','preset','api_base','model','api_key','clear_api_key','promotion_url','use_as_default'})
     if 'clear_api_key' in payload and type(payload['clear_api_key']) is not bool:
         raise ValueError('清除密钥开关必须为布尔值')
+    if 'use_as_default' in payload and type(payload['use_as_default']) is not bool:
+        raise ValueError('用于创作开关必须为布尔值')
     with _core().LOCK, _core().db() as c:
         p = _provider(c,id) if id is not None else dict(id='provider-'+uuid.uuid4().hex,name='自定义服务',preset='custom',api_base='',model='',api_key='',promotion_url='')
-        p.update({k:v for k,v in payload.items() if k not in ('api_key','clear_api_key')})
+        p.update({k:v for k,v in payload.items() if k not in ('api_key','clear_api_key','use_as_default')})
         p['api_base']=_url(p['api_base'])
         p['name']=_text(p['name'],80,False)
         p['preset']=_text(p['preset'],32,False)
@@ -301,7 +303,11 @@ def save_provider(payload, id=None):
             p['api_key']=''
             if p['id'] == 'provider-legacy':
                 _disable_legacy_key(c)
+        if payload.get('use_as_default') and not p.get('api_key'):
+            raise ValueError('要用于创作，请填写Key；如暂不启用，可选择仅保存连接。')
         c.execute('INSERT INTO providers VALUES (?,?) ON CONFLICT(id) DO UPDATE SET value=excluded.value',(p['id'],_dump(p)))
+        if payload.get('use_as_default'):
+            _set(c,'assignments',dict(topic_provider_id=p['id'],writing_provider_id=p['id']))
         return _public(p)
 
 

@@ -29,6 +29,52 @@ class PlatformTests(unittest.TestCase):
     def provider(self, **extra):
         return platform.save_provider(dict(name='local',preset='custom',api_base='http://127.0.0.1:8888/v1',model='own-model',api_key='secret-test-key',**extra))
 
+    def test_save_and_use_connection_is_atomic_and_does_not_call_model(self):
+        p=self.provider(use_as_default=True)
+        expected=dict(topic_provider_id=p['id'],writing_provider_id=p['id'])
+        self.assertEqual(platform.state()['assignments'],expected)
+        w=platform.create_workspace({'direction_id':'work'})
+        cfg=platform.effective_config(w['id'])
+        self.assertEqual(cfg['_topic_config']['api_key'],'secret-test-key')
+        self.assertEqual(cfg['_writing_config']['api_key'],'secret-test-key')
+        self.assertNotIn('api_key',p)
+        with core.db() as c:
+            saved=json.loads(c.execute('SELECT value FROM providers WHERE id=?',(p['id'],)).fetchone()[0])
+        self.assertNotIn('use_as_default',saved)
+        platform.save_provider({'api_key':'','use_as_default':True},p['id'])
+        self.assertTrue(platform.list_providers()[0]['has_api_key'])
+        self.request.assert_not_called()
+
+    def test_save_only_never_switches_or_revives_creation_model(self):
+        first=self.provider(use_as_default=True)
+        second=self.provider()
+        advanced=dict(topic_provider_id=first['id'],writing_provider_id=second['id'])
+        platform.save_assignments(advanced)
+        platform.save_provider({'name':'updated without switching','use_as_default':False},first['id'])
+        self.assertEqual(platform.state()['assignments'],advanced)
+        disabled=dict(topic_provider_id=None,writing_provider_id=None)
+        platform.save_assignments(disabled)
+        self.provider()
+        self.assertEqual(platform.state()['assignments'],disabled)
+        self.request.assert_not_called()
+
+    def test_invalid_save_and_use_rolls_back_connection_and_assignments(self):
+        p=self.provider(use_as_default=True)
+        before=platform.state()
+        with self.assertRaises(ValueError):
+            platform.save_provider(dict(name='bad',preset='custom',api_base='https://model.invalid/v1',model='mock',api_key='',use_as_default=True))
+        self.assertEqual(platform.state(),before)
+        with self.assertRaises(ValueError):
+            platform.save_provider({'name':'must rollback','clear_api_key':True,'use_as_default':True},p['id'])
+        self.assertEqual(platform.state(),before)
+        self.request.assert_not_called()
+
+    def test_creation_model_flag_requires_boolean(self):
+        for value in ('yes',1,None):
+            with self.assertRaises(ValueError):self.provider(use_as_default=value)
+        self.assertEqual(platform.list_providers(),[])
+        self.request.assert_not_called()
+
     def test_fresh_samples_and_idempotence(self):
         s = platform.state()
         self.assertEqual(s['brand'],'创作罗盘（暂名）')

@@ -111,7 +111,7 @@ function startTrialContent(itemIndex=0,mode='preview'){
  [350,750,1150].forEach((delay,i)=>setTimeout(()=>{if(token!==generationToken)return;state.progress=i+1;if(i===2){state.generating=false;state.task={id:'TRIAL-DEMO-'+(state.history.length+1),index:selectedIndex,...trialDraft(choice,context.experimentGoal),...context,status:'待审核',version:1,verified:false,publishedUrl:''};record();toast(mode==='preview'?'预置样稿已展开；没有调用真实AI或付费服务。':'模拟自有模型流程结束，未发出真实请求。');}render();},delay));
 }
 function generate(){
- if(!state.journey.confirmed){toast('先选择一个具体方向，或进入已选的个人工作空间。');go('explore');return;}
+ if(!state.journey.confirmed){toast('先选择一个具体方向，或进入独立工作空间示例。');go('explore');return;}
  const same=state.task&&state.task.workspaceId===state.journey.activeWorkspaceId;
  startTrialContent(same?state.task.trialItem||0:0,same?state.task.sourceMode||'preview':'preview');
 }

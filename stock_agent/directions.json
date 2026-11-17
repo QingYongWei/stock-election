@@ -3,7 +3,7 @@
     "id": "finance",
     "domain": "finance",
     "name": "财经问题讲清楚",
-    "workspace_name": "盘后工坊",
+    "workspace_name": "财经笔记",
     "reader": "想理解财经现象的普通读者",
     "work": "从一个问题出发，核对来源、解释概念，再补上反例与未知。",
     "materials": "需要可追溯来源与原始材料；人工核实时间、口径及事实和观点。",

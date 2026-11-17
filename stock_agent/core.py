@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 TZ = dt.timezone(dt.timedelta(hours=8))
 ROOT = Path(__file__).resolve().parent.parent
 DATA = Path(os.environ.get('STOCK_AGENT_DATA', str(ROOT / 'data' / 'stock_agent'))).resolve()
-DEFAULT = dict(brand='盘后工坊', goal='每天整理市场变化，持续积累信任与相关读者，预留广告合作', audience='没有时间逐条整理盘后信息的读者', tone='克制、清楚、事实与解释分开', stock_list='600519,300750,002594', schedule_time='18:00', schedule_enabled=False, weekly_day=4, provider_mode='facts', api_base='https://api.deepseek.com', model='', api_key='', dsa_report_dir='', dsa_run_enabled=False, dsa_repo='', dsa_python='', dsa_timeout=600, timezone='Asia/Shanghai')
+DEFAULT = dict(brand='财经笔记', goal='从公开资料出发解释财经问题，区分事实、观点与不确定性', audience='没有时间逐条整理盘后信息的读者', tone='克制、清楚、事实与解释分开', stock_list='600519,300750,002594', schedule_time='18:00', schedule_enabled=False, weekly_day=4, provider_mode='facts', api_base='https://api.deepseek.com', model='', api_key='', dsa_report_dir='', dsa_run_enabled=False, dsa_repo='', dsa_python='', dsa_timeout=600, timezone='Asia/Shanghai')
 LOCK = threading.RLock()
 RUN_LOCK = threading.Lock()
 

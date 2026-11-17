@@ -84,6 +84,7 @@ test_legacy_migration_backup_and_idempotence_without_touching_live_data (test_pl
 test_no_provider_cannot_generate_generic_or_claim_sample_ready (test_platform_integration.PlatformIntegrationTests.test_no_provider_cannot_generate_generic_or_claim_sample_ready) ... ok
 test_partial_assignment_does_not_start_paid_generic_requests (test_platform_integration.PlatformIntegrationTests.test_partial_assignment_does_not_start_paid_generic_requests) ... ok
 test_profile_and_dual_provider_routing_reach_actual_model_payloads (test_platform_integration.PlatformIntegrationTests.test_profile_and_dual_provider_routing_reach_actual_model_payloads) ... ok
+test_public_product_defaults_are_neutral_and_saved_brand_is_preserved (test_platform_integration.PlatformIntegrationTests.test_public_product_defaults_are_neutral_and_saved_brand_is_preserved) ... ok
 test_removed_disclosure_blocks_approval_and_preserves_other_workspace (test_platform_integration.PlatformIntegrationTests.test_removed_disclosure_blocks_approval_and_preserves_other_workspace) ... ok
 test_approved_images_download_checks_text_and_png_digest (test_publication_v2.PublicationV2Tests.test_approved_images_download_checks_text_and_png_digest) ... ok
 test_article_edit_does_not_silently_rewrite_card_plan (test_publication_v2.PublicationV2Tests.test_article_edit_does_not_silently_rewrite_card_plan) ... ok
@@ -120,6 +121,6 @@ test_preview_route_returns_safe_html (test_review_regressions.ReviewRegressions.
 test_weekly_uses_latest_market_capture_not_edited_rowid (test_review_regressions.ReviewRegressions.test_weekly_uses_latest_market_capture_not_edited_rowid) ... ok
 
 ----------------------------------------------------------------------
-Ran 119 tests in 17.362s
+Ran 120 tests in 12.701s
 
 OK

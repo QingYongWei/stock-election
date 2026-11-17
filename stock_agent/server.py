@@ -128,7 +128,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send(500,{'error':'内部处理失败，请查看本地日志；未暴露密钥和上游响应。'})
 
 def main():
-    p=argparse.ArgumentParser(description='本地多领域内容平台与个人工作空间')
+    p=argparse.ArgumentParser(description='本地多领域内容平台与独立工作空间')
     p.add_argument('--port',type=int,default=8765)
     args=p.parse_args()
     try:httpd=LocalServer(('127.0.0.1',args.port),Handler)

@@ -86,6 +86,16 @@ class PlatformIntegrationTests(IsolatedAgentTest):
         self.assertFalse(platform.get_workspace('workspace-finance')['feedback'])
         self.assertNotIn('OFFLINE-ONLY',json.dumps(state))
 
+    def test_public_product_defaults_are_neutral_and_saved_brand_is_preserved(self):
+        self.assertEqual(platform.list_workspaces(),[])
+        w=platform.create_workspace({'direction_id':'finance'})
+        self.assertEqual(w['name'],'财经笔记')
+        self.assertEqual(w['profile']['brand'],'财经笔记')
+        platform.update_workspace(w['id'],{'profile':{'brand':'用户自定义栏目'}})
+        core.init()
+        self.assertEqual(platform.get_workspace(w['id'])['name'],'用户自定义栏目')
+        self.network.assert_not_called()
+
     def test_legacy_config_invalid_sync_is_atomic(self):
         platform.create_workspace({'direction_id':'finance'})
         before=core.config(True);workspace=platform.get_workspace('workspace-finance')
